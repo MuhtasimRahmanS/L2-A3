@@ -1,0 +1,16 @@
+import express, { Request, Response } from "express";
+import bookRouter from "./module/book/book.router";
+import borrowRouter from "./module/borrow/borrow.router";
+
+const app = express();
+app.use(express.json())
+app.use('/api/books',bookRouter)
+app.use('/api/borrow',borrowRouter)
+
+app.get("/", (req:Request, res:Response)=>{
+    res.send({
+        status: true,
+        message:"server live"})
+})
+
+export default app;
